@@ -26,7 +26,7 @@ export default function FeaturedProduct({ product }: FeaturedProductProps) {
         <div className="rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-ocean-primary to-ocean-secondary shadow-xl">
           <div className="relative aspect-[4/3]">
             <Image
-              src={product.image}
+              src={process.env.NODE_ENV === 'production' ? `/yourshop${product.image}` : product.image}
               alt={product.name}
               fill
               priority
