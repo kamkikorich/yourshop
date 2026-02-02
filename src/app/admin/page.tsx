@@ -14,13 +14,11 @@ export default function AdminPage() {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editPrice, setEditPrice] = useState<number>(0);
   const [editStock, setEditStock] = useState<StockStatus>('available');
-  const isDevelopment = process.env.NODE_ENV === 'development';
 
   useEffect(() => {
-    if (!isDevelopment) return;
     const saved = sessionStorage.getItem('admin_authed') === '1';
     setIsAuthed(saved);
-  }, [isDevelopment]);
+  }, []);
 
   const handleLogin = () => {
     if (!requiredPassword) {
@@ -67,31 +65,6 @@ export default function AdminPage() {
       return p;
     }));
   };
-
-  if (!isDevelopment) {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-ocean-light/30 to-fresh-white flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-lg p-8 w-full max-w-sm">
-          <div className="text-center mb-6">
-            <div className="text-4xl mb-2">�</div>
-            <h1 className="text-2xl font-bold text-ocean-primary">Admin Dimatikan</h1>
-            <p className="text-sm text-gray-500">Borneo Fresh Seafood</p>
-          </div>
-
-          <p className="text-sm text-gray-600 text-center">
-            Halaman admin tidak tersedia untuk build production (static export).
-          </p>
-
-          <Link 
-            href="/" 
-            className="block text-center mt-4 text-sm text-ocean-primary hover:underline"
-          >
-            ← Kembali ke Laman Utama
-          </Link>
-        </div>
-      </div>
-    );
-  }
 
   if (!isAuthed) {
     return (
@@ -149,7 +122,7 @@ export default function AdminPage() {
               <p className="text-xs text-white/70">Pengurusan Produk</p>
             </div>
           </div>
-          
+
           <Link
             href="/"
             className="text-sm bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full transition-colors"
@@ -208,7 +181,7 @@ export default function AdminPage() {
                         </div>
                       </div>
                     </td>
-                    
+
                     <td className="p-4">
                       {editingId === product.id ? (
                         <input
@@ -221,7 +194,7 @@ export default function AdminPage() {
                         <span className="font-semibold">RM{product.pricePerKg}</span>
                       )}
                     </td>
-                    
+
                     <td className="p-4">
                       {editingId === product.id ? (
                         <select
@@ -246,14 +219,14 @@ export default function AdminPage() {
                         </span>
                       )}
                     </td>
-                    
+
                     <td className="p-4">
                       <button
                         onClick={() => toggleActive(product.id)}
                         className={`
                           inline-flex px-3 py-1 rounded-full text-xs font-medium transition-colors
-                          ${product.isActive 
-                            ? 'bg-green-100 text-green-700 hover:bg-green-200' 
+                          ${product.isActive
+                            ? 'bg-green-100 text-green-700 hover:bg-green-200'
                             : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                           }
                         `}
@@ -261,7 +234,7 @@ export default function AdminPage() {
                         {product.isActive ? 'Aktif' : 'Tidak Aktif'}
                       </button>
                     </td>
-                    
+
                     <td className="p-4 text-right">
                       {editingId === product.id ? (
                         <div className="flex gap-2 justify-end">
