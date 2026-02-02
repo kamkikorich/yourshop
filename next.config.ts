@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   output: 'export',
   distDir: 'dist',
   basePath: isProd ? `/${repoName}` : '',
-  assetPrefix: isProd ? `/${repoName}/` : '',
+
   images: {
     unoptimized: true,
     remotePatterns: [

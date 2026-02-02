@@ -3,7 +3,7 @@
 import Link from 'next/link';
 
 export default function Header() {
-  const showAdminLink = process.env.NODE_ENV === 'development';
+
 
   return (
     <header className="bg-white/85 backdrop-blur sticky top-0 z-40 border-b border-ocean-primary/10">
@@ -15,15 +15,13 @@ export default function Header() {
               <p className="text-xs text-gray-500">Order harian: 1 produk, cepat dan mudah</p>
             </div>
           </Link>
-          
-          {showAdminLink ? (
-            <Link 
-              href="/admin" 
-              className="text-sm bg-ocean-primary text-white hover:bg-ocean-secondary px-4 py-2 rounded-full transition-colors shadow-sm"
-            >
-              Admin
-            </Link>
-          ) : null}
+
+          <Link
+            href="/admin"
+            className="text-sm bg-ocean-primary text-white hover:bg-ocean-secondary px-4 py-2 rounded-full transition-colors shadow-sm"
+          >
+            Admin
+          </Link>
         </div>
       </div>
     </header>
