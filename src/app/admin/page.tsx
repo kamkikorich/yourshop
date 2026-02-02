@@ -5,7 +5,7 @@ import { initialProducts, Product, StockStatus } from '@/data/products';
 import Link from 'next/link';
 
 export default function AdminPage() {
-  const requiredPassword = (process.env.NEXT_PUBLIC_ADMIN_PASSWORD ?? '').trim();
+  const requiredPassword = (process.env.NEXT_PUBLIC_ADMIN_PASSWORD ?? 'borneo2026').trim();
   const [isAuthed, setIsAuthed] = useState(false);
   const [passwordInput, setPasswordInput] = useState('');
   const [loginError, setLoginError] = useState<string | null>(null);
